@@ -27,6 +27,7 @@ gcloud container clusters update cluster-name \
   --update-addons=NodeLocalDNS=ENABLED
 ```
 GUI Console
+![alt text](https://i.imgur.com/nF5v4RO.png)
 
 
 ### Verifying that NodeLocal DNSCache is enabled
