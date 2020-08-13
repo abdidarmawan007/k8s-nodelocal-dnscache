@@ -1,2 +1,1 @@
-# k8s-nodelocal-dnscache
-Reduced average DNS lookup time with NodeLocal DNSCache in GKE
+# NodeLocal DNSCache improves Cluster DNS performance by running a dns caching agent on cluster nodes as a DaemonSet
