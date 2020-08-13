@@ -5,6 +5,7 @@ Overview: NodeLocal DNSCache is an optional GKE add-on that you can run in addit
 - Cloud DNS for external hostname queries. These queries are forwarded to Cloud DNS by the local MetaData Server running on the same node as the Pod the query originated from.
 - kube-dns for all other DNS queries. The kube-dns-upstream service is used by node-local-dns Pods to reach out to kube-dns Pods.
 
+![alt text](https://cloud.google.com/kubernetes-engine/images/nodelocal-dns-cache-diagram.svg)
 
 
 
