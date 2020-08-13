@@ -21,10 +21,26 @@ Overview: NodeLocal DNSCache is an optional GKE add-on that you can run in addit
 - the above ports causes NodeLocal DNSCache to fail and result in DNS errors.
 
 ### Enabling NodeLocal DNSCache on existing cluster GKE
-Cli
+cli gcloud
 ```
 gcloud container clusters update cluster-name \
   --update-addons=NodeLocalDNS=ENABLED
 ```
+GUI Console
 
 
+### Verifying that NodeLocal DNSCache is enabled
+```
+kubectl get pods -n kube-system -o wide | grep node-local-dns
+```
+
+### Troubleshooting NodeLocal DNSCache
+- Validating Pod configuration
+```
+kubectl exec -it pod-name -- cat /etc/resolv.conf | grep nameserver
+```
+
+- The nameserver IP should match the IP address output by:
+```
+kubectl get svc -n kube-system kube-dns -o jsonpath="{.spec.clusterIP}"
+```
