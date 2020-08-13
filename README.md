@@ -7,6 +7,10 @@ Overview: NodeLocal DNSCache is an optional GKE add-on that you can run in addit
 
 ![alt text](https://cloud.google.com/kubernetes-engine/images/nodelocal-dns-cache-diagram.svg)
 
+### Benefits of NodeLocal DNSCache
+
+- Reduced average DNS lookup time
+- Connections from Pods to their local cache don't create conntrack table entries. This prevents dropped and rejected connections caused by conntrack table exhaustion and race conditions.
 
 
 
