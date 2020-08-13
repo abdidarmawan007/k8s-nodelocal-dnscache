@@ -13,5 +13,18 @@ Overview: NodeLocal DNSCache is an optional GKE add-on that you can run in addit
 - Connections from Pods to their local cache don't create conntrack table entries. This prevents dropped and rejected connections caused by conntrack table exhaustion and race conditions.
 
 
+### Details
+- NodeLocal DNSCache requires GKE version 1.15 or higher
+- Connections between the local DNS cache and kube-dns use TCP instead of UDP for improved reliability
+- DNS queries for external URLs (URLs that don't refer to cluster resources) are forwarded directly to the local Cloud DNS metadata server, bypassing kube-dns
+- NodeLocal DNSCache Pods listen on port 53, 9253 and 8080 on the nodes. Running any other hostNetwork Pod using the above ports or configuring hostPorts with
+- the above ports causes NodeLocal DNSCache to fail and result in DNS errors.
+
+### Enabling NodeLocal DNSCache on existing cluster GKE
+Cli
+```
+gcloud container clusters update cluster-name \
+  --update-addons=NodeLocalDNS=ENABLED
+```
 
 
